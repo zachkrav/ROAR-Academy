@@ -27,4 +27,4 @@ A2 = 2*np.ones(test_dimension)
 begin_time = time()
 result = A1.dot(A2)
 elapsed_time = time() - begin_time
-print('List takes {0}s to compute {1}'.format(elapsed_time, result))
+print('Numpy takes {0}s to compute {1}'.format(elapsed_time, result))
