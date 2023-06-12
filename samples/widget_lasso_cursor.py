@@ -15,8 +15,7 @@ ax1.set_ylim([-10, 10])
 def onSelect(x):
 	print(x)
 
-lineprops = {'color': 'red', 'linewidth': 3, 'alpha': 0.5}
-lasso = LassoSelector(ax=ax1, onselect=onSelect, lineprops=lineprops)
+lasso = LassoSelector(ax=ax1, onselect=onSelect)
 
 fig2 = plt.figure(1)           # Create another Figure 1
 ax2 = plt.gca()                # Get Current Axes function
