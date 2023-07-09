@@ -5,7 +5,7 @@
 ## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
 from keras.datasets import cifar100
 import matplotlib.pyplot as plt
-from keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
+from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
 import numpy as np
 import cv2
 

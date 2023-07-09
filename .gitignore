@@ -128,3 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .DS_Store
+samples/lenna-mod.jpg
+samples/nasdaqetfs.txt
+samples/md5
+*.zip

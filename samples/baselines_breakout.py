@@ -2,47 +2,42 @@
 ## Example code: baselines_breakout.py
 ## Author: Allen Y. Yang
 ##
-## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
-
-# To run this code, install stable_baselines: a Reinforcement Learning package 
-# https://stable-baselines.readthedocs.io/en/master/guide/install.html
-# 
-# Further note, stable_baselines only compatible with Tensorflow v1 up to 1.15
-# Do not run this code with Tensorflow 2.0 or above
+## (c) Copyright 2023. Intelligent Racing Inc. Not permitted for commercial use
 
 import os
-# os.environ["KERAS_BACKEND"] = "plaidml.keras.backend" # If you have AMD GPU and have installed PlaidML library
-from stable_baselines.common.cmd_util import make_atari_env
-from stable_baselines.common.policies import CnnPolicy
-from stable_baselines.common.vec_env import VecFrameStack
-from stable_baselines import A2C
+from stable_baselines3.common.env_util import make_atari_env
+from stable_baselines3.common.vec_env import VecFrameStack
+from stable_baselines3 import A2C
 
 # There already exists an environment generator that will make and wrap atari environments correctly.
-# We use 16 parallel processes
-env = make_atari_env('BreakoutNoFrameskip-v4', num_env=16, seed=0)
+# We use 8 parallel processes
+env = make_atari_env('Breakout-v4', n_envs=8, seed=0)
 # Stack 4 frames
 env = VecFrameStack(env, n_stack=4)
 
-model = A2C(CnnPolicy, env, lr_schedule='constant', verbose=1)
+# A2C is primarily meant to be run on the CPU
+model = A2C('CnnPolicy', env, verbose=1, device='cpu')
 
 path = os.path.dirname(os.path.abspath(__file__))
 model_file_name = path + '/breakout_a2c'
-LOAD_PRETRAINED = False
+LOAD_PRETRAINED = True
+TRAIN_TIMESTEPS = int(1e5)
 if LOAD_PRETRAINED:
     # Load saved model
-    model = A2C.load(model_file_name, lr_schedule='constant', verbose=1)
+    model = A2C.load(model_file_name)
 else:
-    model.learn(total_timesteps=int(5e6))
-    model.save(model_file_name )
+  model.learn(total_timesteps=TRAIN_TIMESTEPS)
+  model.save(model_file_name)
 
 # Evaluate the agent
 episode_reward = 0
+obs = env.reset()
 for _ in range(1000):
   action, _ = model.predict(obs)
   obs, reward, done, info = env.step(action)
-  env.render()
+  env.render("human")
   episode_reward += reward
-  if done or info.get('is_success', False):
-    print("Reward:", episode_reward, "Success?", info.get('is_success', False))
+  if sum(done):
+    print("Reward:", episode_reward)
     episode_reward = 0.0
     obs = env.reset()
