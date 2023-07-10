@@ -10,7 +10,7 @@ import numpy as np
 
 from stable_baselines3 import HerReplayBuffer, SAC, DDPG, TD3
 
-env = gym.make("parking-v0")
+env = gym.make("parking-v0", render_mode='human')
 
 # Create 4 artificial transitions per real transition
 n_sampled_goal = 4
@@ -29,8 +29,8 @@ model = SAC('MultiInputPolicy', env, replay_buffer_class=HerReplayBuffer,
 
 import os
 path = os.path.dirname(os.path.abspath(__file__))
-model_file_name = path + '/her_sac_highway'
-LOAD_PRETRAINED = False
+model_file_name = path + '/parking_her_sac'
+LOAD_PRETRAINED = True
 if LOAD_PRETRAINED:
   # Load saved model
   model = SAC.load(model_file_name, env=env)
@@ -42,12 +42,10 @@ obs, info = env.reset()
 
 # Evaluate the agent
 episode_reward = 0
-for _ in range(1000):
-  action, _ = model.predict(obs)
+for _ in range(100):
+  action, _ = model.predict(obs, deterministic=True)
   obs, reward, done, truncated, info = env.step(action)
-  env.render('human')
-  episode_reward += reward
+  env.render()
   if done or truncated or info.get('is_success', False):
-    print("Reward:", episode_reward, "Success?", info.get('is_success', False))
-    episode_reward = 0.0
-    obs = env.reset()
+    print("Success?", info.get('is_success', False))
+    obs, info = env.reset()
