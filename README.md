@@ -21,7 +21,7 @@ Users of this course are recommended to install the following software packages.
 
 Once Python 3.8 is installed, the following Python modules can be installed using pip within the conda environment (for example, in (base) environment):
   
-    python -m pip install install numpy matplotlib
+    python -m pip install numpy matplotlib
 
 ## Tensorflow Installation for Windows and Linux
 
