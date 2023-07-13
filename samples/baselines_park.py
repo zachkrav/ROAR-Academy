@@ -4,6 +4,10 @@
 ##
 ## (c) Copyright 2023. Intelligent Racing Inc. Not permitted for commercial use
 
+#import os
+#
+#os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 import gymnasium as gym
 import highway_env
 import numpy as np
@@ -30,7 +34,7 @@ model = SAC('MultiInputPolicy', env, replay_buffer_class=HerReplayBuffer,
 import os
 path = os.path.dirname(os.path.abspath(__file__))
 model_file_name = path + '/parking_her_sac'
-LOAD_PRETRAINED = True
+LOAD_PRETRAINED = False
 if LOAD_PRETRAINED:
   # Load saved model
   model = SAC.load(model_file_name, env=env)
