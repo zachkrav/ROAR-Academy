@@ -59,7 +59,7 @@ This course will require installation of the following reinforcement learning mo
 
 * stable-baselines 3: <https://github.com/DLR-RM/stable-baselines3>
 
-    python -m pip install stable-baselines3
+    python -m pip install 'stable-baselines3[extra]'
 
 * highway-env: <https://github.com/Farama-Foundation/HighwayEnv>
 
