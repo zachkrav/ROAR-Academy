@@ -54,13 +54,13 @@ This course will require installation of the following reinforcement learning mo
 
 * gym simulator: <https://github.com/openai/gym>
 
-  python -m pip install gym==0.18
+    python -m pip install gym==0.17.3 pyglet==1.5.11
 
 * stable-baselines 3: <https://github.com/DLR-RM/stable-baselines3>
 
-  python -m pip install stable-baselines3
+    python -m pip install stable-baselines3
 
 * highway-env: <https://github.com/Farama-Foundation/HighwayEnv>
 
-  python -m pip install highway-env
+    python -m pip install highway-env
 
