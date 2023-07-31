@@ -7,7 +7,7 @@ ROAR Academy was created by Dr. Allen Y. Yang. The material has been taught at t
 * Gradient-Descent Algorithms
 * Deep Neural Networks (DNN)
 
-The material has been made ope source FOR NON-COMMERCIAL USE only. Please contact the author for any questions regarding commercial licensing: <allen@intelligentracing.com>
+The material has been made open source FOR NON-COMMERCIAL USE only. Please contact the author for any questions regarding commercial licensing: <allen@intelligentracing.com>
 
 ## Basic Installation
 
