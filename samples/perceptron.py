@@ -4,7 +4,6 @@
 ##
 ## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
 
-# Please make sure to conda install -c conda-forge keras
 import keras
 from keras.models import Sequential
 from keras.layers import Dense

@@ -10,6 +10,7 @@ from keras.layers import Dense
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # Create data
 linearSeparableFlag = False
 x_bias = 6
@@ -45,8 +46,8 @@ def toy_2D_samples(x_bias ,linearSeparableFlag):
         plt.plot(samples4[:, 0], samples4[:, 1], 'rx')
         plt.show()
 
-    label1 = np.array([[1, 0]])
-    label2 = np.array([[0, 1]])
+    label1 = np.array([[1, 1], [-1, -1]])
+    label2 = np.array([[1, -1], [-1, 1]])
     labels1 = np.repeat(label1, 100, axis = 0)
     labels2 = np.repeat(label2, 100, axis = 0)
     labels = np.concatenate((labels1, labels2 ), axis =0)
@@ -63,9 +64,7 @@ testingX = samples[randomOrder[100:200], :]
 testingY = labels[randomOrder[100:200], :]
 
 model = Sequential()
-model.add(Dense(4, input_shape=(2,), activation='sigmoid', use_bias=True))
-# model.add(Dense(4, input_shape=(2,), activation='relu', use_bias=True))
-model.add(Dense(2, activation='softmax' ))
+model.add(Dense(2, activation='relu'))
 model.compile(loss='mean_squared_error', optimizer='sgd', metrics=['binary_accuracy'])
 
 model.fit(trainingX, trainingY, epochs=500, batch_size=10, verbose=1, validation_split=0.2)
