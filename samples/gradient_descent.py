@@ -43,7 +43,7 @@ def grad(aa):
     grad_aa[1] = - 1/sample_count * np.sum(update_vector)
     return grad_aa
 
-aa = np.array([-4, 4])
+aa = np.array([-2, 2])
 delta = np.inf
 epsilon = 0.001
 learn_rate = 0.01

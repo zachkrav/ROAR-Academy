@@ -33,6 +33,8 @@ m4 = np.array([[0,1,2,3,4,5],
 s1 = m4[:,1]
 s2 = m4[1, 2:4]
 s3 = m4[2:4, 4:6]
+s4 = m4[2::2, ::2]
+
 
 def swap_rows(M,a,b):
      # Check if M is a numpy array
