@@ -2,7 +2,7 @@
 ## Example code: cartpole_dqn.py
 ## Author: Allen Y. Yang
 ##
-## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
+## (c) Copyright 2020-2024. Intelligent Racing Inc. Not permitted for commercial use
 
 # Please make sure to install openAI gym module
 # pip install gym==0.17.3
