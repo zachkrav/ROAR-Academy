@@ -5,7 +5,9 @@
 ## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
 
 # Please make sure to install openAI gym module
-# https://github.com/openai/gym
+# pip install gym==0.17.3
+# pip install pyglet==1.5.29
+
 import random
 import gym
 import os
